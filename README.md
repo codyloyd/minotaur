@@ -92,3 +92,36 @@ game.draw = function() {
 the `update` and `draw` functions attempt to run at 60fps... so in the above example the rectangle object is updated consistently so that it moves across the screen as it is drawn.
 
 the function parameter `dt` stands for Delta Time. It is the amount of time that has passed between each frame, in milliseconds.  Use this variable when manipulating variables so that the speed of your animation does not fluctuate if the animation framerate fluctuates.  For more details see (this article)[https://www.isaacsukin.com/news/2015/01/detailed-explanation-javascript-game-loops-and-timing].
+
+## Drawing images
+
+Drawing Images with the HTML Canvas API is not difficult ([docs here](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/drawImage)), however most games deal with _large_ numbers of images, and often bundle them into spritesheets.  We've created our SpriteSheet module to make slicing and sorting spritsheets a little easier.
+
+```javascript
+const spriteSheet = new SpriteSheet({
+  path: "/img/spritesheet.png",
+  context: game.context,
+  // the size of each sprite in the spritesheet only used for 'getSprite'
+  // if your sheet has some sprites that don't fit into the grid, you can
+  // use `createSprite` to get them with specific pixel values
+  colSize: 32,
+  rowSize: 32,
+  // optional property, if there is a margin around your sprites
+  margin: 0
+});
+
+// get a sprite by putting in it's row/column on the spritesheet
+const player = spriteSheet.getSprite(0, 0);
+const enemy = spriteSheet.getSprite(5, 0);
+
+// alternatively put in actual pixel values, x,y,w,h
+const enemy2 = spriteSheet.createSprite(128, 0, 32, 32);
+
+game.draw = function () {
+  //Sprites reference the context passed into the 'spritesheet' constructor
+  //draw takes the standard x, y, width, height, parameters
+  player.draw(100, 100, 100, 100);
+  enemy.draw(300, 200, 100, 100);
+  enemy2.draw(250, 400, 100, 100);
+};
+```
