@@ -1,5 +1,5 @@
 class Game {
-  constructor({width, height, scale, parent}) {
+  constructor({width, height, scale=1, parent="game"}) {
     this.width = width
     this.height = height
     this.parent = document.getElementById(parent)
