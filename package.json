@@ -1,6 +1,6 @@
 {
   "name": "@codyloyd/tiny-game",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "tiny javascript game library",
   "main": "src/index.js",
   "scripts": {
