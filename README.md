@@ -15,7 +15,7 @@ This toolkit fills in the gap between manipulating the Canvas directly, and usin
 Getting started is _simple_.
 ```
 // install with npm
-npm install tiny-game
+npm install @codyloyd/tiny-game
 ```
 
 Include and initialize: 
