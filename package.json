@@ -1,0 +1,29 @@
+{
+  "name": "tiny-game",
+  "version": "1.0.0",
+  "description": "tiny javascript game library",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codyloyd/tiny-game.git"
+  },
+  "keywords": [
+    "game"
+  ],
+  "author": "Cody Loyd <codyloyd@gmail.com> (https://codyloyd.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/codyloyd/tiny-game/issues"
+  },
+  "homepage": "https://github.com/codyloyd/tiny-game#readme",
+  "devDependencies": {
+    "eslint": "6.8.0",
+    "eslint-config-airbnb-base": "14.1.0",
+    "eslint-config-prettier": "6.11.0",
+    "eslint-plugin-import": "2.20.2",
+    "prettier": "2.0.5"
+  }
+}
