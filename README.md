@@ -125,3 +125,32 @@ game.draw = function () {
   enemy2.draw(250, 400, 100, 100);
 };
 ```
+
+## User Input
+
+This library does not handle user input.  JavaScript is perfectly capable of handling that all by itself.  Here is a naive example: 
+
+```javascript
+const position = {x:10, y:10}
+
+window.onkeydown = function({key}) {
+  if (key=='ArrowRight') {
+    position.x += 10
+  }
+  if (key=='ArrowLeft') {
+    position.x -= 10
+  }
+  if (key=='ArrowUp') {
+    position.y -= 10
+  }
+  if (key=='ArrowDown') {
+    position.y += 10
+  }
+}
+
+game.draw = function() {
+  game.context.fillRect(position.x, position.y, 10, 10)
+}
+```
+
+See [this example](https://github.com/codyloyd/tiny-pong/blob/master/src/index.js#L15) for a more nuanced handling of user input.
