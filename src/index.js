@@ -1,5 +1,5 @@
-const Game = require('./Game')
-const SpriteSheet = require('./SpriteSheet.js')
+const {Game} = require('./Game')
+const {SpriteSheet} = require('./SpriteSheet')
 
 module.exports = {
   Game,
