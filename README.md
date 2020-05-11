@@ -95,7 +95,7 @@ the function parameter `dt` stands for Delta Time. It is the amount of time that
 
 ## Drawing images
 
-Drawing Images with the HTML Canvas API is not difficult ([docs here](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/drawImage)), however most games deal with _large_ numbers of images, and often bundle them into spritesheets.  We've created our SpriteSheet module to make slicing and sorting spritsheets a little easier.
+Drawing individual images with the HTML Canvas API is not difficult ([docs here](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/drawImage)), however most games deal with _large_ numbers of images, and often bundle them into spritesheets.  We've created our SpriteSheet module to make slicing and sorting spritesheets a little easier.
 
 ```javascript
 const spriteSheet = new SpriteSheet({
