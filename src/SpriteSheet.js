@@ -26,6 +26,13 @@ class SpriteSheet {
       this.rowSize
     );
   }
+
+  getAnimatedSprite({frames, duration, loop, onComplete}) {
+    const spriteFrames = frames.map(([x,y])=>{
+      return this.getSprite(x,y)
+    })
+    return new AnimatedSprite({onComplete, loop, context: this.context, image: this.image, frames: spriteFrames, duration})
+  }
 }
 
 class Sprite {
@@ -50,6 +57,41 @@ class Sprite {
       w,
       h
     );
+  }
+}
+
+class AnimatedSprite {
+  constructor({frames, duration, loop=true, onComplete=()=>{}}) {
+    this.frames = frames
+    this.currentFrame = 0
+    this.time = 0
+    this.duration = duration
+    this.loop = loop
+    this.onComplete = onComplete
+    this.running = true
+  }
+
+  advanceFrame() {
+    this.currentFrame++
+
+    if (this.loop) {
+      this.currentFrame = this.currentFrame % this.frames.length
+    } else if (this.currentFrame == this.frames.length-1) {
+      this.running = false
+      this.onComplete()
+    }
+  }
+
+  update(dt) {
+    this.time += dt
+    if (this.time > this.duration && this.running) {
+      this.time = 0
+      this.advanceFrame()
+    }
+  }
+
+  draw(x,y,w,h) {
+    this.frames[this.currentFrame].draw(x,y,w,h)
   }
 }
 
