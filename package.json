@@ -4,7 +4,9 @@
   "description": "tiny javascript game library",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs",
+    "test": "echo \"Error: LOL TESTS... riiiiight\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -24,6 +26,7 @@
     "eslint-config-airbnb-base": "14.1.0",
     "eslint-config-prettier": "6.11.0",
     "eslint-plugin-import": "2.20.2",
-    "prettier": "2.0.5"
+    "prettier": "2.0.5",
+    "vuepress": "1.5.0"
   }
 }
