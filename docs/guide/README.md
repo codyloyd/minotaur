@@ -80,4 +80,4 @@ game.draw = function() {
 
 the `update` and `draw` functions attempt to run at 60fps... so in the above example the rectangle object is updated consistently so that it moves across the screen as it is drawn.
 
-the function parameter `dt` stands for Delta Time. It is the amount of time that has passed between each frame, in milliseconds.  Use this variable when manipulating variables so that the speed of your animation does not fluctuate if the animation framerate fluctuates.  For more details see (this article)[https://www.isaacsukin.com/news/2015/01/detailed-explanation-javascript-game-loops-and-timing].
+the function parameter `dt` stands for Delta Time. It is the amount of time that has passed between each frame, in milliseconds.  Use this variable when manipulating variables so that the speed of your animation does not fluctuate if the animation framerate fluctuates.  For more details see [this article](https://www.isaacsukin.com/news/2015/01/detailed-explanation-javascript-game-loops-and-timing).

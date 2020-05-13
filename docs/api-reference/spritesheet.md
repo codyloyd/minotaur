@@ -1,5 +1,7 @@
 # SpriteSheet
 
+*under construction*
+
 constructor({path, context, colSize, rowSize, margin})
 
 createSprite(x,y,w,h)
