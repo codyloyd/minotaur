@@ -1,8 +1,8 @@
 # Tutorial
 
-In this tutorial we are going to build a very simple clone of the game 'PONG' using tiny-game.
+In this tutorial, we are going to build a straightforward clone of the game 'PONG' using tiny-game.
 
-A basic outline of what we're going to cover.
+### A basic outline of what we're going to cover.
 
 1. Project setup.
 2. Drawing shapes with the Canvas API.
@@ -13,7 +13,7 @@ A basic outline of what we're going to cover.
 
 ## Project setup
 
-Tiny-game is intended to be used with modern JavaScript build-tools, you can get as far into setting up your environment as you want, but for the purposes of this tut we're going to keep things pretty basic.
+Tiny-game is intended to be used with modern JavaScript build-tools. You can get as far into setting up your environment as you want, but for this tutorial, we're going to keep things pretty basic.
 
 We'll be using webpack to build our project and "http-server" to serve it so we can view it in the browser.  If you know what you're doing, feel free to use any other combination of bundler and server.
 
@@ -60,9 +60,9 @@ Add the following basic boilerplate to your `index.html`:
 </html>
 ```
 
-Feel free to set up your HTML and CSS however you like. The important item here is the `<div id="game">` which TinyGame will use for setting up the game canvas.
+Feel free to set up your HTML and CSS however you like. The critical item here is the `<div id="game">` which TinyGame uses to set up the game canvas.
 
-In `src/index.js` add the following code to import and initialize a new `Game` object.
+In `src/index.js`, add the following code to import and initialize a new `Game` object.
 
 ```javascript
 // src/index.js
@@ -92,7 +92,7 @@ in another terminal run
 http-server
 ```
 
-Watch the output as the server command runs and look for a url.  The default at the time of this writing is `http://localhost:8080` but depending on the specifics of your system, it might be slightly different.  Whatever the URL is, open it in your browser. You should see this:
+Watch the output as the server command runs and look for a URL.  The default at the time of this writing is `http://localhost:8080`, but depending on the specifics of your system, it might be slightly different.  Whatever the URL is, open it in your browser. You should see this:
 
 ![blank canvas](./img/blank.png)
 
@@ -104,7 +104,7 @@ To draw shapes to our canvas, we are going to reference the native HTML Canvas A
 
 You don't need to know everything about Canvas to get started here. The general overview provided by the links above should be good enough for now.
 
-Instead of re-implementing all of these canvas drawing functions, tiny-game simply exposes the rendering context of the game canvas that gets set up for you when you run `new Game()`. Therefore, to draw shapes, all you need to do is reference that context and use the built-in methods!
+Instead of re-implementing all of these canvas drawing functions, tiny-game exposes the rendering context of the game canvas that is created when you run `new Game()`. Therefore, to draw shapes, all you need to do is reference that context and use the built-in methods!
 
 In your `src/index.js` file, add a `fillRect` function to your game.draw() function like this:
 
@@ -121,13 +121,17 @@ Most Canvas drawing functions, and therefore most tiny-game functions take a sim
 1. `x`: the x coordinates of the top-left corner of our shape
 2. `y`: the y coordinates of the top-left corner of our shape
 3. `width`: the width of our shape
-4. `height: the height of our shape
+4. `height`: the height of our shape
 
 Which means, we've drawn a rectangle that starts at `x:20, y:20` and is `100px/100px`.
 
 ### Game Objects
 
-This part is nothing specific to tiny-game... but for our PONG clone, we're going to need 3 shapes, 2 rectangle paddles and a ball. In order to keep our code organized, and to make moving these shapes around easier later we're going to store them in JavaScript objects.
+For our PONG clone, we're going to need 3 shapes:
+- 2 rectangle paddles 
+- a ball. 
+
+To keep our code organized and to make moving these shapes around easier later, we're going to store them in JavaScript objects.
 
 Add these objects to your `src/index.js` and then draw them inside your `game.draw()` function:
 
@@ -172,13 +176,13 @@ function drawCircle(x,y,radius) {
 }
 ```
 
-Since we only need to draw one ball we don't need to worry about this for now.
+Since we only need to draw one ball, we don't need to worry about this for now.
 
 ### Color
 
-Drawing in color with Canvas is easy. Before doing a drawing operation, set a `fillStyle` using a css-color string. For something as simple as PONG, we don't need much color, but just to keep things interesting let's pick a couple colors for our paddles and ball. You can use any color that would be recognized in a css file such as an `rgb` or `hsl` color.  Even [named colors](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords) are recognized.
+Drawing in color with Canvas is easy. Before doing a drawing operation, set a `fillStyle` using a css-color string. For something as simple as PONG, we don't need much color, but just to keep things interesting, let's pick a couple of colors for our paddles and ball. You can use any color that would be recognized in a css file such as an `rgb` or `hsl` color.  Even [named colors](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords) are recognized.
 
-Lets use a couple hex colors for now.
+Let's use a couple of hex colors for now.
 
 ```javascript
 game.draw = function() {
@@ -212,11 +216,11 @@ game.update(dt) {
   ball.x += 1
 }
 ```
-The above code will run every frame and increment the `x` position of the ball by 1px. This is not optimal for the following reasons:
+The above code runs every frame and increment the `x` position of the ball by 1px. However, the following issues arise:
 - The movement speed is dependent on the game's framerate.
 - The speed of the ball is constant and cannot be changed.
 
-Updating our ball object and the `game.update()` function will fix both of these issues.
+Updating our ball object and the `game.update()` function fixes both of these issues.
 
 First, add variables to your ball object for x and y velocity.  Call them `vx` and `vy` and then use those variables to control the speed of the ball:
 
@@ -235,11 +239,11 @@ game.update = function(dt) {
   ball.y += ball.vy * dt
 }
 ```
-Notice that in the above snippet, we multiply the velocity by `game.update`'s `dt` parameter.  This parameter stands for the amount of time that has elapsed since the last time `game.update` has been called.  Doing this calculation keeps the speed of the ball consistent, even if the framerate lags and the time between each iteration of the update function is inconsistent.
+Notice that in the above snippet, we multiply the velocity by `game.update`'s `dt` parameter.  This parameter stands for the amount of time that has elapsed since the last time `game.update` has been called.  Doing this calculation keeps the speed of the ball consistent, even if the framerate lags and the time between each iteration of the update function are inconsistent.
 
 ### Wall Bounce
 
-Making the ball bounce off of the walls requires checking the position of the ball and changing it's direction once it hits the edge of the game canvas. We can do this check inside of the update function like so:
+Making the ball bounce off of the walls requires checking the position of the ball and changing its direction once it hits the edge of the game canvas. We can do this check inside of the update function like so:
 
 ``` javascript
 game.update = function(dt) {
