@@ -2,6 +2,7 @@
 
 In this tutorial, we are going to build a straightforward clone of the game 'PONG' using Minotaur.
 
+You can play the final product [HERE](https://codyloyd.github.io/minotaur-pong/)
 ### A basic outline of what we're going to cover.
 
 1. Project setup.
