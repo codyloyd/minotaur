@@ -1,5 +1,5 @@
 {
-  "name": "@minotaurGT/base",
+  "name": "@codyloyd/minotaur-base",
   "version": "1.0.4",
   "description": "a minimal javascript game toolkit",
   "main": "src/index.js",

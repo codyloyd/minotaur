@@ -3,7 +3,7 @@
 Getting started is _simple_.
 ```
 // install with npm
-npm install @minotaur/base
+npm install @codyloyd/minotaur-base
 ```
 
 Include and initialize: 

@@ -21,7 +21,7 @@ We'll be using webpack to build our project and "http-server" to serve it so we 
 
 Create a folder for the project and inside it run the following command to install the dependencies we'll need to build our game.
 ```
-npm install @minotaur/base
+npm install @codyloyd/minotaur-base
 
 npm install --save-dev webpack webpack-cli
 
