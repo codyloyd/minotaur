@@ -788,6 +788,9 @@ game.update = funtion(dt) {
 
 That's it!  The game is in a state that we could call 'complete'.  Of course NO game is ever _actually_ finished is it?
 
+The code for our completed project can be found in [this repo](https://github.com/codyloyd/minotaur-pong).
+
+You can play that example [HERE](https://codyloyd.github.io/minotaur-pong/).
 ### What next?
 There are several improvements you could make to this game. Consider the following:
 - Display the winner on the 'end' screen.
