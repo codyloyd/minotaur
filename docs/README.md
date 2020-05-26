@@ -1,7 +1,7 @@
 ---
 home: true
-# heroImage: /hero.png
-heroText: Tiny Game 
+heroImage: /minotaur.png
+heroText: Minotaur Game Toolkit
 tagline: A minimal JavaScript game toolkit
 actionText: Get Started →
 actionLink: /guide/
@@ -14,5 +14,3 @@ features:
   details: Sticking to plain JavaScript for most things keeps everything light and snappy.
 footer: MIT Licensed | Copyright © 2020-present Cody Loyd
 ---
-
-# Tiny Game

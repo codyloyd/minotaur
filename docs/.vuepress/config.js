@@ -1,7 +1,7 @@
 module.exports = {
-  title: 'TinyGame',
+  title: 'Minotaur',
   description: 'A Minimal JavaScript Game Toolkit',
-  base: '/tiny-game/',
+  base: '/minotaur/',
   themeConfig: {
     displayAllHeaders: true,
     sidebar: [

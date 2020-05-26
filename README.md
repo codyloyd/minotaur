@@ -1,6 +1,6 @@
-# tiny-game
+# Minotaur Game Toolkit
 
-A teeny-tiny JavaScript game framework.
+A minimal JavaScript game toolkit.
 
 ## WHAT? WHY?
 
@@ -15,19 +15,19 @@ This toolkit fills in the gap between manipulating the Canvas directly, and usin
 Getting started is _simple_.
 ```
 // install with npm
-npm install @codyloyd/tiny-game
+npm install @minotaur/base
 ```
 
 Include and initialize: 
 ```javascript
-import {Game} from 'tiny-game'
+import {Game} from '@minotaur/base'
 
 const game = new Game({
   width: 480,
   height:  360,
   parent: 'game'
 })
-// `parent` is the id of an element to which tiny-game will append the game-canvas
+// `parent` is the id of an element to which Minotaur will append the game-canvas
 
 
 game.update = function(dt) {
@@ -44,7 +44,7 @@ game.start()
 
 ### drawing to the canvas
 
-`tiny-game` simply exposes the native HTML Canvas API, so drawing images, shapes and text is as simple as referencing that API through the game object with `game.context`.
+Minotaur simply exposes the native HTML Canvas API, so drawing images, shapes and text is as simple as referencing that API through the game object with `game.context`.
 
 this example draws a "darkblue" rectangle to the canvas
 ```javascript
