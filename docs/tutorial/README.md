@@ -14,13 +14,13 @@ You can play the final product [HERE](https://codyloyd.github.io/minotaur-pong/)
 
 ## Project setup
 
-Minotaur is intended to be used with modern JavaScript build-tools. You can get as far into setting up your environment as you want, but for this tutorial, we're going to keep things pretty basic.
+Minotaur was built to be used alongside modern JavaScript build-tools. You can get as far into setting up your environment as you want, but for this tutorial, we're going to keep things pretty basic.
 
 We'll be using webpack to build our project and "http-server" to serve it so we can view it in the browser. If you know what you're doing, feel free to use any other combination of bundler and server.
 
 ### Installations
 
-Create a folder for the project and inside it run the following command to install the dependencies we'll need to build our game.
+Create a folder for the project, and inside it run the following command to install the dependencies we'll need to build our game.
 ```
 npm install @codyloyd/minotaur-base
 
@@ -105,7 +105,7 @@ To draw shapes to our canvas, we are going to reference the native HTML Canvas A
 
 You don't need to know everything about Canvas to get started here. The general overview provided by the links above should be good enough for now.
 
-Instead of re-implementing all of these canvas drawing functions, Minotaur exposes the rendering context of the game canvas that is created when you run `new Game()`. Therefore, to draw shapes, all you need to do is reference that context and use the built-in methods!
+Instead of re-implementing all of these canvas drawing functions, Minotaur exposes the rendering context of the game canvas that `new Game()` creates. Therefore, to draw shapes, all you need to do is reference that context and use the built-in methods!
 
 In your `src/index.js` file, add a `fillRect` function to your game.draw() function like this:
 
@@ -117,7 +117,7 @@ game.draw() {
 
 When you refresh your browser, you should now see a 100px wide black square in the upper corner of your Canvas! 
 
-Most Canvas drawing functions, and therefore most Minotaur functions take a similar set of arguments. In this case, the arguments are, in order: 
+Most Canvas drawing functions, and therefore most Minotaur functions, take a similar set of arguments. In this case, the arguments are, in order: 
 
 1. `x`: the x coordinates of the top-left corner of our shape
 2. `y`: the y coordinates of the top-left corner of our shape
@@ -128,8 +128,8 @@ Which means, we've drawn a rectangle that starts at `x:20, y:20` and is `100px/1
 
 ### Game Objects
 
-For our PONG clone, we're going to need 3 shapes:
-- 2 rectangle paddles 
+For our PONG clone, we're going to need three shapes:
+- Two rectangle paddles 
 - a ball. 
 
 To keep our code organized and to make moving these shapes around easier later, we're going to store them in JavaScript objects.
@@ -217,7 +217,7 @@ game.update(dt) {
   ball.x += 1
 }
 ```
-The above code runs every frame and increment the `x` position of the ball by 1px. However, the following issues arise:
+The above code runs every frame and increments the `x` position of the ball by 1px. However, the following issues arise:
 - The movement speed is dependent on the game's framerate.
 - The speed of the ball is constant and cannot be changed.
 
@@ -267,7 +267,7 @@ On our game canvas, the ball is considered out of bounds if `ball.x` is bigger t
 If you run the game now, the ball should move and bounce around the screen. Feel free to update the velocity variables inside the ball object to fine-tune the speed.
 
 ## User input
-Minotaur does not need to handle input for you, because JavaScript and the native DOM API are already perfectly capable of that. Handling user input is as easy as setting up some basic event listeners.
+Minotaur does not need to handle input for you, because JavaScript and the native DOM API are already perfectly capable of that. Handling user input is as easy as setting up event listeners.
 
 In your `index.js` file, add a function to handle keypresses and then add a 'keydown' event listener that uses it. 
 
@@ -284,7 +284,7 @@ function handleKeydown(event) {
 document.addEventListener('keydown', handleKeydown)
 ```
 
-Inside this function we simply need to update our paddle position using the objects we've already set up. For now we're going to keep the two paddles in sync, but you might want to either add a different set of keys for a second player, or implement a little AI so you can play against the computer.
+Inside this function, we simply need to update our paddle position using the objects we've already set up. For now, we're going to keep the two paddles in sync, but you might want to either add a different set of keys for a second player or implement a little AI so you can play against the computer.
 
 Our updated `handleKeydown` function:
 ```js
@@ -301,9 +301,9 @@ function handleKeydown(event) {
 }
 ```
 
-The above code is functional, but introduces 2 problems that are easily fixed. 
-- The paddles do not move smoothly when you press and hold a key down, and depending on your computer's key-repeat settings, you might have to smash the arrow keys repeatedly to get the paddle to move more than 10px at a time.
-- The paddles can move all the way off the screen!
+The above code is functional but introduces two easily fixed problems. 
+- The paddles do not move smoothly when you press and hold a key down and depending on your computer's key-repeat settings, you might have to smash the arrow keys repeatedly to get the paddle to move more than 10px at a time.
+- The paddles can move off the screen!
 
 There are a few steps required to fix the first issue:
 1. Add a property for the paddle's velocity (`vy`) to each paddle. (We don't need a `vx` because the paddles can only move up and down.)
@@ -351,7 +351,7 @@ game.update = function(dt) {
 ```
 
 #### Use keypresses to change paddle velocity.
-Since we want to change the velocity only when a key is actually pressed down, we need to do a little refactoring to our handleKeydown function and add a new function for handling keyUp. There are many possible ways to solve this problem. We're going to add an object for keeping track of which keys are pressed down at any given time and then manipulate that object in our keypress-handlers.
+Since we want to change the velocity only when a key is pressed down, we need to do a little refactoring to our handleKeydown function and add a new function for handling keyUp. There are many possible ways to solve this problem. We're going to add an object for keeping track of which keys are pressed down at any given time and then manipulate that object in our keypress-handlers.
 
 ```js
 const isDown = {
@@ -458,7 +458,7 @@ game.update = function(dt) {
 ```
 
 ## Some refactoring
-You may have noticed that our last few updates have added quite a bit of repeated code since we have to do the same position and velocity checks for each paddle every time. Almost any other game is going to end up being much more complex than this one, so it's a problem that's worth solving. To clean it up, we're going to abstract out our paddle code into a simple class and put all of the update code into _that_ file. Doing so will clean up our update function considerably.
+You may have noticed that our last few updates have added quite a bit of repeated code since we have to do the same position and velocity checks for each paddle every time. Almost any other game is going to end up being much more complicated than this one, so it's a problem that's worth solving. To clean it up, we're going to abstract out our paddle code into a simple class and put all of the update code into _that_ file. Doing so will clean up our update function considerably.
 
 Since we're using webpack we can move the paddle logic to a new file easily. Add a new file to your project directory called `paddle.js` and then import it at the top of your `index.js` like so:
 
@@ -467,7 +467,7 @@ Since we're using webpack we can move the paddle logic to a new file easily. Add
 import {Paddle} from './paddle'
 ```
 
-Create a new `Paddle` class inside the new file and export it. This snippet is empty, but has all the functions we're going to implement.
+Create a new `Paddle` class inside the new file and export it. This snippet is empty but has all the functions we're going to implement.
 ```js
 // src/paddle.js
 class Paddle {
@@ -587,7 +587,7 @@ game.draw = function() {
 ```
 The complete current status of `index.js` and `paddle.js` can be found [in this gist](https://gist.github.com/codyloyd/f439bb80e6b9f1c3031f8535f8c934c3)
 
-If you want, you could easily replicate this refactoring step with the ball, in a new file called `ball.js`. For now, since we only have one ball we won't worry about doing that.
+If you want, you could easily replicate this refactoring step with the ball, in a new file called `ball.js`. For now, since we only have one ball, we won't worry about doing that.
 
 ## Object collision
 Lets get our ball bouncing off of those paddles! The algorithm for checking whether or not the ball is colliding with the paddles is below. Add it to your index.js. For more information about this very useful algorithm search "AABB collision detection".
@@ -642,7 +642,7 @@ game.draw = function() {
 }
 ```
 
-Now, in the `game.update` add the logic to incremement the correct player's score when the ball hits one of the sides. We'll also reset the ball position to the middle of the screen and change it's direction when it hits. Currently we're still doing the 'wall bounce' off of those walls, but now that we have working paddles, we can remove that and replace it with our scoring code. Here is the entire game.update function.
+Now, in the `game.update` add the logic to increment the correct player's score when the ball hits one of the sides. We'll also reset the ball position to the middle of the screen and change it's direction when it hits. Currently, we're still doing the 'wall bounce' off of those walls, but now that we have working paddles, we can remove that and replace it with our scoring code. Here is the entire game.update function.
 ```js
 game.update = function(dt) {
   // update ball position
@@ -683,7 +683,7 @@ game.update = function(dt) {
 ```
 
 ### Game states
-Game state logic can get quite complicated, but for a game as simple as this one, it doesn't need to be too involved. Basically we're going to:
+Game state logic can get quite complicated, but for a game as simple as this one, it doesn't need to be too involved. We're going to:
 1. Create a variable called `gameState`.
 2. Use that variable to determine what we draw on the screen.
 3. Update that variable in our code when appropriate to change the game state.
@@ -693,9 +693,9 @@ Add the following to index.js:
 let gameState = 'start'
 ```
 
-In a more complicated game we _could_ end up with many different states. For now we're going to stick to 'start', 'play' and 'end'.
+In a more complicated game, we _could_ end up with many different states. For now, we're going to stick to 'start', 'play' and 'end'.
 
-The Draw function for each of these screens can get quite long. In some cases it might make more sense to move these screen draw functions into their own module. For the sake of clarity we'll keep them in index.js for now. All we need to do is check the `gameState` variable inside of our draw function, draw our 'title' screen if the state is `play`, draw the 'gameover' screen if it is `end` and draw the actual game screen if it is `play`.
+The Draw function for each of these screens can get quite long. In some cases, it might make more sense to move these screen draw functions into new modules. For the sake of clarity, we'll keep them in index.js. All we need to do is check the `gameState` variable inside of our draw function, draw our 'title' screen if the state is `play`, draw the 'game over' screen if it is `end` and draw the actual game screen if it is `play`.
 
 Add the following to the top of your game.draw function.
 ```js
@@ -712,7 +712,7 @@ Add the following to the top of your game.draw function.
     textWidth = game.context.measureText(subtitle).width
     game.context.fillText(subtitle, game.width/2 - textWidth/2, 300)
 
-    // return is important here.. don't want to draw anything else
+    // return is significant here. We don't want to draw anything else
     // if we're in the 'start' state
     return
   }
@@ -730,13 +730,13 @@ Add the following to the top of your game.draw function.
     textWidth = game.context.measureText(subtitle).width
     game.context.fillText(subtitle, game.width/2 - textWidth/2, 300)
 
-    // return is important here.. don't want to draw anything else
+    // return is significant here. We don't want to draw anything else
     // if we're in the 'end' state
     return
   }
 ```
 
-Notice we're doing that `measureText` calculation multiple times to center our text. It might be a good idea to move that out to it's own function.
+Notice we're doing that `measureText` calculation multiple times to center our text. It might be a good idea to move that out to a new function.
 
 We also need to add a statement to the top of our update function to make sure the game isn't running in the background while we're not on the `play` screen.
 
@@ -787,7 +787,7 @@ game.update = funtion(dt) {
 
 ## Conclusion
 
-That's it!  The game is in a state that we could call 'complete'.  Of course NO game is ever _actually_ finished is it?
+That's it!  The game is in a state that we could call 'complete'.  Of course, NO game is ever _actually_ finished, is it?
 
 The code for our completed project can be found in [this repo](https://github.com/codyloyd/minotaur-pong).
 
@@ -795,8 +795,8 @@ You can play that example [HERE](https://codyloyd.github.io/minotaur-pong/).
 ### What next?
 There are several improvements you could make to this game. Consider the following:
 - Display the winner on the 'end' screen.
-- Make it work for 2 players, or for 1 player vs computer.
+- Make it work for two players or one player vs. computer.
 - Make the ball speed up as the game progresses.
-- Add 'powerups' like extra balls, or an extra long paddle.
-- Add a 'pause' state.
+- Add 'powerups' like extra balls, or an extra-long paddle.
+- Add a 'paused' state.
 - Use pretty images instead of basic shapes.
