@@ -67,7 +67,7 @@ In `src/index.js`, add the following code to import and initialize a new `Game` 
 
 ```javascript
 // src/index.js
-import {Game} from '@minotaur/base'
+import {Game} from '@codyloyd/minotaur-base'
 
 const game = new Game({
   width: 400,

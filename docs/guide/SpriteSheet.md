@@ -5,7 +5,7 @@ Drawing individual images to the canvas using the basic Canvas API is not diffic
 Our `SpriteSheet` module provides some nice tools to make drawing images a little simpler.
 
 ```javascript
-import {SpriteSheet} from '@minotaur/base'
+import {SpriteSheet} from '@codyloyd/minotaur-base'
 
 const spriteSheet = new SpriteSheet({
   path: "/img/spritesheet.png",

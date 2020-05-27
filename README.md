@@ -20,7 +20,7 @@ npm install @codyloyd/minotaur-base
 
 Include and initialize: 
 ```javascript
-import {Game} from '@minotaur/base'
+import {Game} from '@codyloyd/minotaur-base'
 
 const game = new Game({
   width: 480,
